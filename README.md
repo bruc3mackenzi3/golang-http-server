@@ -12,13 +12,19 @@ the ability to do more thorough functional testing manually.
 To keep things simple a flat directory structure is used here.  By keeping all modules in the same package having to import is avoided.  More substantial Go apps should use the standard workspace directory structure.
 
 ## Run Instructions
-Download and extract the app and cd into it.  Run the app with:
+Download and extract the app and cd into it.  Run the app with the following commands.
+Windows:
 ```
 go build
 ./go.exe
 ```
+Linux:
+```
+go build
+go run .
+```
 Once the web server is up and running open another terminal, cd to the same directory and test with the following curl command:
-` curl -F 'file=@matrix.csv' 'http://localhost:8080/echo'`
+` curl -F 'file=@data/matrix.csv' 'http://localhost:8080/echo'`
 
 ## Testing
 Unit tests have been implemented using Go's `testing` package.

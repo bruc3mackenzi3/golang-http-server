@@ -7,11 +7,6 @@ import (
 	"net/http"
 )
 
-// Run with
-//		go run .
-// Send request with:
-//		curl -F 'file=@/path/matrix.csv' "localhost:8080/echo"
-
 // 1. ECHO
 func EchoHandler(w http.ResponseWriter, r *http.Request) {
 	file, _, err := r.FormFile("file")

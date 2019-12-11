@@ -32,6 +32,8 @@ Unit tests have been implemented using Go's `testing` package.
 Run the unit tests with the command:
 `go test`
 
+The program has been tested in Windows and Linux.
+
 ### Coverage
 The matrix operations have complete code coverage with both expected and erroneous cases tested.  See `matrix_test.go`
 

@@ -7,18 +7,21 @@ import (
 	"net/http"
 )
 
+/*
+Handler Functions
+*/
 // 1. ECHO
 func EchoHandler(w http.ResponseWriter, r *http.Request) {
 	file, _, err := r.FormFile("file")
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror %s\n", err.Error())))
 		return
 	}
 	defer file.Close()
 
 	records, err := csv.NewReader(file).ReadAll()
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror reading CSV: %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror reading CSV: %s\n", err.Error())))
 		return
 	}
 
@@ -30,14 +33,14 @@ func EchoHandler(w http.ResponseWriter, r *http.Request) {
 func InvertHandler(w http.ResponseWriter, r *http.Request) {
 	file, _, err := r.FormFile("file")
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror %s\n", err.Error())))
 		return
 	}
 	defer file.Close()
 
 	records, err := csv.NewReader(file).ReadAll()
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror reading CSV: %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror reading CSV: %s\n", err.Error())))
 		return
 	}
 
@@ -49,14 +52,14 @@ func InvertHandler(w http.ResponseWriter, r *http.Request) {
 func FlattenHandler(w http.ResponseWriter, r *http.Request) {
 	file, _, err := r.FormFile("file")
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror %s\n", err.Error())))
 		return
 	}
 	defer file.Close()
 
 	records, err := csv.NewReader(file).ReadAll()
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror reading CSV: %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror reading CSV: %s\n", err.Error())))
 		return
 	}
 
@@ -68,20 +71,20 @@ func FlattenHandler(w http.ResponseWriter, r *http.Request) {
 func SumHandler(w http.ResponseWriter, r *http.Request) {
 	file, _, err := r.FormFile("file")
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror %s\n", err.Error())))
 		return
 	}
 	defer file.Close()
 
 	records, err := csv.NewReader(file).ReadAll()
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror reading CSV: %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror reading CSV: %s\n", err.Error())))
 		return
 	}
 
 	response, err := Sum(records)
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror computing sum: %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror computing sum: %s\n", err.Error())))
 		return
 	}
 	fmt.Fprint(w, "\n"+response+"\n")
@@ -91,25 +94,28 @@ func SumHandler(w http.ResponseWriter, r *http.Request) {
 func MultiplyHandler(w http.ResponseWriter, r *http.Request) {
 	file, _, err := r.FormFile("file")
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror %s\n", err.Error())))
 		return
 	}
 	defer file.Close()
 
 	records, err := csv.NewReader(file).ReadAll()
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror reading CSV: %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror reading CSV: %s\n", err.Error())))
 		return
 	}
 
 	response, err := Multiply(records)
 	if err != nil {
-		w.Write([]byte(fmt.Sprintf("\nerror computing multiply: %s", err.Error())))
+		w.Write([]byte(fmt.Sprintf("\nerror computing multiply: %s\n", err.Error())))
 		return
 	}
 	fmt.Fprint(w, "\n"+response+"\n")
 }
 
+/*
+Main Function - Web server built and run here
+*/
 func main() {
 	http.HandleFunc("/echo", EchoHandler)
 	http.HandleFunc("/invert", InvertHandler)

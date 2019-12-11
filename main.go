@@ -28,7 +28,7 @@ func EchoHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	response := Echo(records)
-	fmt.Fprint(w, "\n"+response)
+	fmt.Fprint(w, "\n"+response+"\n")
 }
 
 // 2. INVERT
@@ -47,7 +47,7 @@ func InvertHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	response := Invert(records)
-	fmt.Fprint(w, "\n"+response)
+	fmt.Fprint(w, "\n"+response+"\n")
 }
 
 // 3. FLATTEN
@@ -66,7 +66,7 @@ func FlattenHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	response := Flatten(records)
-	fmt.Fprint(w, "\n"+response)
+	fmt.Fprint(w, "\n"+response+"\n")
 }
 
 // 4. SUM
@@ -89,7 +89,7 @@ func SumHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(fmt.Sprintf("\nerror computing sum: %s", err.Error())))
 		return
 	}
-	fmt.Fprint(w, "\n"+response)
+	fmt.Fprint(w, "\n"+response+"\n")
 }
 
 // 5. MULTIPLY
@@ -112,7 +112,7 @@ func MultiplyHandler(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(fmt.Sprintf("\nerror computing multiply: %s", err.Error())))
 		return
 	}
-	fmt.Fprint(w, "\n"+response)
+	fmt.Fprint(w, "\n"+response+"\n")
 }
 
 func main() {

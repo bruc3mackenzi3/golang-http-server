@@ -1,7 +1,16 @@
 
 # League Backend Challenge
-# Solution
-To keep things simple a flat directory structure is used here.  More substantial Go apps should use the standard workspace directory structure.
+
+## Solution
+`main.go` contains the HTTP server and of course main function.  The HTTP Handlers are exposed publicly to allow for unit testing (more on that below).
+
+`matrix.go` contains the matrix API implementing the five matrix operations.  It provides a clean, consistent interface used by the Server.  It is unit tested in `matrix_test.go`.
+
+Additional CSV files have been provided to illustrate functionality and provide
+the ability to do more thorough functional testing manually.
+
+To keep things simple a flat directory structure is used here.  By keeping all modules in the same package having to import is avoided.  More substantial Go apps should use the standard workspace directory structure.
+
 ## Run Instructions
 Download and extract the app and cd into it.  Run the app with:
 ```
@@ -10,10 +19,12 @@ go build
 ```
 Once the web server is up and running open another terminal, cd to the same directory and test with the following curl command:
 ` curl -F 'file=@matrix.csv' 'http://localhost:8080/echo'`
+
 ## Testing
 Unit tests have been implemented using Go's `testing` package.
 Run the unit tests with the command:
 `go test`
+
 ### Coverage
 The matrix operations have complete code coverage with both expected and erroneous cases tested.  See `matrix_test.go`
 

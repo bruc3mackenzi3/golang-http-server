@@ -1,7 +1,5 @@
 package main
 
-// package Backend_Challenge
-
 import (
 	"encoding/csv"
 	"fmt"
@@ -126,5 +124,5 @@ func main() {
 	http.HandleFunc("/multiply", MultiplyHandler)
 
 	fmt.Println("Server listening!")
-	log.Fatal(http.ListenAndServe("8080", nil))
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
